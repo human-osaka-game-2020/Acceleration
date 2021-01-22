@@ -19,6 +19,8 @@ private:
 	float Gravity;
 	float Time;
 	float Timer;
+	bool IsPushUpArrow;
+	bool IsPushDownArrow;
 	//‰æ‘œ•Û‘¶ŠÖ”
 	int Texture;
 };

@@ -22,33 +22,43 @@ void Ball::Exec()
 {
 	if (CheckHitKey(KEY_INPUT_UP) == true)
 	{
+		IsPushUpArrow = true;
+	}
+
+	if (CheckHitKey(KEY_INPUT_DOWN) == true)
+	{
+		IsPushDownArrow = true;
+	}
+
+	if(IsPushUpArrow == true)
+	{
 		PosY -= Speed - Gravity * Time;
 		Time += 0.1;
 		if (PosY > Height)
 		{
 			PosY = 50.0f;
+			Time = 0.0f;
+			IsPushUpArrow = false;
 		}
 	}
-	if (CheckHitKey(KEY_INPUT_DOWN) == true)
+	
+	if(IsPushDownArrow==true)
 	{
 		PosY += Speed + Gravity * Time;
 		Time += 0.1;
 		if (PosY > Height)
 		{
 			PosY = 50.0f;
+			Time = 0.0f;
+			IsPushDownArrow = false;
 		}
-	}
-	if (CheckHitKey(KEY_INPUT_RETURN) == true)
-	{
-		Time = 0.0;
-		PosY = 50.0f;
 	}
 }
 
 void Ball::Draw()
 {
 	DrawExtendGraph(PosX, PosY, PosX + 100, PosY + 100, Texture, TRUE);
-	DrawFormatString(100, 200, GetColor(255, 0, 255), "X:%f,Y:%f",PosX, PosY);
+	DrawFormatString(100, 200, GetColor(0, 0, 0), "X:%f,Y:%f",PosX, PosY);
 }
 
 void Ball::InitTexture()
